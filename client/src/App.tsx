@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Example from './components/ExampleComponent.tsx'
 import SendText from './components/SendTextComponent.tsx'
+import DataGrid from './components/DataGridComponent.tsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -32,6 +33,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <SendText />
+      <DataGrid />
     </>
   )
 }
