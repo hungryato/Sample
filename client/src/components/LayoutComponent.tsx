@@ -64,16 +64,16 @@ const footerStyle = css`
     text-align: center;
 `;
 
-const LayoutComponent: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const LayoutComponent: React.FC<{ children: React.ReactNode, onHeaderClick: () => void, onMenuClick: () => void }> = ({ children, onHeaderClick, onMenuClick }) => {
     return (
         <div css={containerStyle}>
-        <header css={headerStyle}>Header</header>
+        <header css={headerStyle} onClick={onHeaderClick}>Header</header>
         <div css={mainStyle}>
             <nav css={sidebarStyle}>
             <ul css={sidebarListStyle}>
-                <li css={sidebarItemStyle}><Link css={sidebarLinkStyle} to="/example">Example</Link></li>
-                <li css={sidebarItemStyle}><Link css={sidebarLinkStyle} to="/send-text">Send Text</Link></li>
-                <li css={sidebarItemStyle}><Link css={sidebarLinkStyle} to="/data-grid">Data Grid</Link></li>
+                <li css={sidebarItemStyle}><Link css={sidebarLinkStyle} to="/example" onClick={onMenuClick}>Example</Link></li>
+                <li css={sidebarItemStyle}><Link css={sidebarLinkStyle} to="/send-text" onClick={onMenuClick}>Send Text</Link></li>
+                <li css={sidebarItemStyle}><Link css={sidebarLinkStyle} to="/data-grid" onClick={onMenuClick}>Data Grid</Link></li>
             </ul>
             </nav>
             <main css={contentStyle}>{children}</main>
