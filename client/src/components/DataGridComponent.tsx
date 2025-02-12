@@ -38,9 +38,7 @@ export default function DataTable() {
             <DataGrid
                 rows={rows}
                 columns={columns}
-                paginationModel={{ page: 0, pageSize: 5 }}
-                pagination
-                checkboxSelection
+                hideFooterPagination
             />
         </div>
     );
