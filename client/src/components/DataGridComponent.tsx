@@ -1,7 +1,9 @@
+/** @jsxImportSource @emotion/react */
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
+import { css } from '@emotion/react';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -9,6 +11,12 @@ const columns = [
     { field: 'author', headerName: 'Author', width: 150 },
     { field: 'date', headerName: 'Date', width: 110 },
 ];
+
+const containerStyle = css`
+    height: 400px;
+    width: 100%;
+    margin-top: 20px;
+`;
 
 const fetchData = (setRows: React.Dispatch<React.SetStateAction<any[]>>) => {
     axios.get('https://jsonplaceholder.typicode.com/posts')
@@ -34,7 +42,7 @@ export default function DataTable() {
     }, []);
 
     return (
-        <div style={{ height: 400, width: '100%' }}>
+        <div css={containerStyle}>
             <DataGrid
                 rows={rows}
                 columns={columns}

@@ -1,5 +1,35 @@
+/** @jsxImportSource @emotion/react */
 import { useState } from 'react';
 import axios from 'axios';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+
+const inputStyle = css`
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+`;
+
+const buttonStyle = css`
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+`;
+
+const StyledButton = styled.button`
+    ${buttonStyle}
+`;
 
 const SendTextComponent: React.FC = () => {
     const [text, setText] = useState('');
@@ -27,8 +57,9 @@ const SendTextComponent: React.FC = () => {
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     placeholder="Enter text"
+                    css={inputStyle}
                 />
-                <button type="submit">Send</button>
+                <StyledButton type="submit">Send</StyledButton>
             </form>
             {response && <p>Response from server: {response}</p>}
         </div>
