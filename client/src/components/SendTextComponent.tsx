@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const SendTextComponent: React.FC = () => {
     const [text, setText] = useState('');
@@ -7,15 +8,14 @@ const SendTextComponent: React.FC = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         console.log('Text submitted:', text);
         event.preventDefault();
-        const response = await fetch('http://localhost:3001/send-text', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ text })
-        });
-        const data = await response.text();
-        setResponse(data);
+        axios.post('http://localhost:3001/send-text', { text })
+            .then((res) => {
+                setResponse(res.data);
+            })
+            .catch((error) => {
+                console.error('Error sending text:', error);
+                setResponse('Error sending text');
+            });
     };
 
     return (
