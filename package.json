@@ -1,0 +1,14 @@
+{
+    "name": "my-fullstack-app",
+    "version": "1.0.0",
+    "scripts": {
+        "start:client": "cd client && npm run dev",
+        "start:server": "cd server && ts-node src/index.ts",
+        "start": "concurrently \"npm run start:client\" \"npm run start:server\""
+    },
+    "devDependencies": {
+        "concurrently": "^7.0.0",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.7.3"
+    }
+}
